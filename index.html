@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Rating App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h1 class="mb-4">Movie Ratings</h1>
+    
+    <!-- Add a modal for editing -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Edit Movie</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="editMovieForm">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="editTitle" placeholder="Title" required>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-control" id="editGenre" required>
+                                <option value="">Genre</option>
+                                <option value="Action">Action</option>
+                                <option value="Adventure">Adventure</option>
+                                <option value="Comedy">Comedy</option>
+                                <option value="Crime and mystery">Crime and mystery</option>
+                                <option value="Fantasy">Fantasy</option>
+                                <option value="Horror">Horror</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Science Fiction">Science Fiction</option>
+                                <option value="Thriller">Thriller</option>
+                                <option value="Historical">Historical</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <select class="form-control" id="editUserRating" required>
+                                <option value="">Ratings</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <input type="number" class="form-control" id="editRottenTomatoesRating" placeholder="Rotten Tomatoes Rating (1-100)" min="1" max="100" required>
+                        </div>
+                        <input type="hidden" id="editIndex">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="editMovie()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <form id="movieForm" class="mb-3">
+        <div class="row">
+            <div class="col-md-2">
+                <input type="text" id="title" class="form-control" placeholder="Title" required>
+            </div>
+            <div class="col-md-2">
+                <select type="text" id="genre" class="form-control" placeholder="Genre" required>
+                    <option value="">Genre</option>
+                    <option value="Action">Action</option>
+                    <option value="Adventure">Adventure</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Crime and mystery">Crime and mystery</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Science Fiction">Science Fiction</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="10">Historical</option>
+                </select> 
+            </div>
+            <div class="col-md-2">
+                <select id="userRating" class="form-control" required>
+                    <option value="">Ratings</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <input type="number" id="rottenTomatoesRating" class="form-control" placeholder="Rotten Tomatoes Rating (1-100)" min="1" max="100" required>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn btn-primary">Add Movie</button>
+            </div>
+        </div>
+    </form>
+
+    <div id="movieList" class="row">
+        <!-- Movie cards will be dynamically added here -->
+    </div>
+</div>
+<script src="data.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
